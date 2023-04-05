@@ -24,7 +24,7 @@ COPY ./subaligner-trained/ /subaligner
 
 RUN cd /subaligner && python3 -m pip install -e.
 
-RUN python3 -m pip install rq==1.12.0
+RUN python3 -m pip install rq==1.12.0 pycountry
 
 COPY ./subaligner-standalone/utils.py /scripts/
 
