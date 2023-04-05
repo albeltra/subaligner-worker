@@ -26,4 +26,6 @@ RUN cd /subaligner && python3 -m pip install -e.
 
 RUN python3 -m pip install rq==1.12.0
 
-ENTRYPOINT ["sh", "-c", "rq worker subtitles --with-scheduler --url redis://$REDIS_HOST:$REDIS_PORT"]
+COPY ./subaligner-standalone/utils.py /scripts/
+
+ENTRYPOINT ["sh", "-c", "cd /scripts && rq worker subtitles --with-scheduler --url redis://$REDIS_HOST:$REDIS_PORT"]
