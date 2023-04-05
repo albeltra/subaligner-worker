@@ -20,6 +20,12 @@ ARG PATH="/root/miniconda3/bin:${PATH}"
 
 RUN conda install -c conda-forge gxx
 
+RUN wget -O /usr/share/keyrings/gpg-pub-moritzbunkus.gpg https://mkvtoolnix.download/gpg-pub-moritzbunkus.gpg
+
+RUN apt update
+
+RUN apt install -y mkvtoolnix
+
 COPY ./subaligner-trained/ /subaligner
 
 RUN cd /subaligner && python3 -m pip install -e.
